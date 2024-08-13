@@ -18,9 +18,22 @@ header h1 {
 	font-size: 22px;
 } 
 
+main {
+	padding: 30px 0 0 8px;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 50px;
+}
+
 .cards {
-    width: 200px;
-    height: 200px;
+    width: 250px;
+    height: 250px;
     box-shadow: 1px 1px 6px #cdcdcd;
     border-radius: 5px;
     background: #f7f7f7;
@@ -58,4 +71,9 @@ header h1 {
     height: 40px;
     display: block;
     margin: 0 auto;
+}
+
+.cards a {
+    text-align: center;
+    font-size: 14px;
 }
