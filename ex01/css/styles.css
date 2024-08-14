@@ -3,23 +3,46 @@
 	padding: 0;
 	box-sizing: border-box;
 	font-family: "Roboto", sans-serif;
+	font-size: 16px;
 }
 
-header {
+.header {
     background: #333232;
     height: 50px;
 	display: flex;
 	align-items: center;
 	color: #eee;
-	padding: 0 0 0 8px;
+	padding: 0 8px 0 8px;
 }
 
-header h1 {
-	font-size: 22px;
+.header h1 {
+	font-size: 1.5rem;
 } 
 
 main {
-	padding: 30px 0 0 8px;
+    padding: 30px 8px 0 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    gap: 30px;
+}
+
+main header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+main header h2 {
+	font-size: 1.2rem;
+}
+
+hr {
+    border: 0.5px solid #004724;
+    border-radius: 5px;
+    width: 95%;	
+    display: block;
+    margin: 0 auto;
 }
 
 .container {
@@ -51,7 +74,7 @@ main {
 }
 
 .cards h2 {
-	font-size: 18px;
+	font-size: 1rem;
 }
 
 .cards img {
@@ -66,7 +89,7 @@ main {
     background: #00b74b;
     color: #fff;
     font-weight: bold;
-    font-size: 18px;
+    font-size: 1rem;
     width: 90%;
     height: 40px;
     display: block;
@@ -75,5 +98,20 @@ main {
 
 .cards a {
     text-align: center;
-    font-size: 14px;
+    font-size: 0.8rem;
+}
+
+@media screen and (min-width: 1200px) {
+
+	* {
+		font-size: 18px;
+	}
+
+	main {
+		flex-direction: row;
+	}
+
+	hr {
+		width: auto;
+	}
 }
