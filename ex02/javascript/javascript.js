@@ -6,6 +6,8 @@ botaoAdicionar.addEventListener('click', () => {
     
     if (numeroDigitado.value !== "") {
         somatorio.value = Number(somatorio.value) + Number(numeroDigitado.value);
+        numeroDigitado.value = "";
+        numeroDigitado.focus();
     } else {
         alert('Digite um número.')        
     }
