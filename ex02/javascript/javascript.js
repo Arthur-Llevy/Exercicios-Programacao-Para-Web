@@ -5,6 +5,5 @@ botaoAdicionar.addEventListener('click', () => {
     let somatorio = document.getElementById('somatorio');
 
     somatorio.value = Number(somatorio.value) + Number(numeroDigitado.value);
-    console.log(somatorio.value)
 })
 
