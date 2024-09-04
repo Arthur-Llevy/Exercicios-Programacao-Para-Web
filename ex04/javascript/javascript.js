@@ -1,4 +1,5 @@
 function mostrarDados() {
+
     const dadosAluno = {
         nome: document.getElementById('nome').value,
         idade: document.getElementById('idade').value,
@@ -6,8 +7,23 @@ function mostrarDados() {
         matricula: document.getElementById('matricula').value
     }
 
-    document.getElementById('paragrafoNome').innerText = `Nome: ${dadosAluno.nome}`;
-    document.getElementById('paragrafoIdade').innerText = `Idade: ${dadosAluno.idade}`;
-    document.getElementById('paragrafoCpf').innerText = `CPF: ${dadosAluno.cpf}`;
-    document.getElementById('paragrafoMatricula').innerText = `Matrícula: ${dadosAluno.matricula}`;
+    if (dadosAluno.nome === "") {
+        alert("Preencha o campo 'nome'");
+        return;
+    } else if (dadosAluno.idade === "") {
+        alert("Preencha o campo 'idade'")   
+        return;
+    } else if (dadosAluno.cpf === "") {
+        alert("Preencha o campo 'CPF'")   
+        return;
+    } else if (dadosAluno.matricula === "") {
+        alert("Preencha o campo 'matrícula'")   
+        return;
+    }
+
+    if (dadosAluno.idade.toString().includes(".")) {
+        return alert('Por favor, digite uma idade válida sem casas decimais.');        
+    }
+
+    document.getElementById('dados').innerText = JSON.stringify(dadosAluno);
 }
