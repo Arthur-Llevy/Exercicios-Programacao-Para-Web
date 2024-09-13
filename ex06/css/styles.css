@@ -18,7 +18,7 @@ header h1 {
     flex-wrap: wrap;
 }
 
-#letras p {
+.letra {
     font-size: 40px;
     border: 1px solid black;
     padding: 30px;
