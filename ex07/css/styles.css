@@ -1,0 +1,35 @@
+h1 {
+    text-align: center;
+}
+
+#letras {
+    display: flex;
+    gap: 60px;
+    justify-content: center;
+    margin: 50px;
+}
+
+.letra {
+    border-bottom: 2px solid black;
+    width: 50px;
+    text-align: center;
+    font-size: 50px;
+    font-weight: bold;
+}
+
+.botoes {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    width: 480px;
+    margin: 0 auto;
+}
+
+button {
+    padding: 10px;
+    font-size: 20px;
+    width: 100px;
+    height: 60px;
+}
