@@ -46,6 +46,13 @@ const digitarLetra = (letra) => {
             paragrafo.textContent = letra
         });
     } else {
-        
+        document.getElementById('imagem').style.display = 'block';
+        document.getElementById('palavraSorteada').textContent = `A palavra era: ${palavraAleatoriaEscolhida}`;
+        document.getElementById('palavraSorteada').style.display = 'block';
+        document.getElementById('botoes').style.display = 'none';
     }
 };
+
+const resetar = () => {
+    window.location.reload();
+}

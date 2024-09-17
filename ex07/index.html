@@ -12,34 +12,39 @@
         <h1>Jogo da forca</h1>
         <div id="letras">
         </div>
-        <div class="botoes">
-            <button onclick="digitarLetra('A')">A</button>
-            <button onclick="digitarLetra('B')">B</button>
-            <button onclick="digitarLetra('C')">C</button>
-            <button onclick="digitarLetra('D')">D</button>
-            <button onclick="digitarLetra('E')">E</button>
-            <button onclick="digitarLetra('F')">F</button>
-            <button onclick="digitarLetra('G')">G</button>
-            <button onclick="digitarLetra('H')">H</button>
-            <button onclick="digitarLetra('I')">I</button>
-            <button onclick="digitarLetra('J')">J</button>
-            <button onclick="digitarLetra('K')">K</button>
-            <button onclick="digitarLetra('L')">L</button>
-            <button onclick="digitarLetra('M')">M</button>
-            <button onclick="digitarLetra('N')">N</button>
-            <button onclick="digitarLetra('O')">O</button>
-            <button onclick="digitarLetra('P')">P</button>
-            <button onclick="digitarLetra('Q')">Q</button>
-            <button onclick="digitarLetra('R')">R</button>
-            <button onclick="digitarLetra('S')">S</button>
-            <button onclick="digitarLetra('T')">T</button>
-            <button onclick="digitarLetra('U')">U</button>
-            <button onclick="digitarLetra('V')">V</button>
-            <button onclick="digitarLetra('W')">W</button>
-            <button onclick="digitarLetra('X')">X</button>
-            <button onclick="digitarLetra('Y')">Y</button>
-            <button onclick="digitarLetra('Z')">Z</button>
+        <div class="grade">
+            <div class="botoes" id="botoes">
+                <button onclick="digitarLetra('A')">A</button>
+                <button onclick="digitarLetra('B')">B</button>
+                <button onclick="digitarLetra('C')">C</button>
+                <button onclick="digitarLetra('D')">D</button>
+                <button onclick="digitarLetra('E')">E</button>
+                <button onclick="digitarLetra('F')">F</button>
+                <button onclick="digitarLetra('G')">G</button>
+                <button onclick="digitarLetra('H')">H</button>
+                <button onclick="digitarLetra('I')">I</button>
+                <button onclick="digitarLetra('J')">J</button>
+                <button onclick="digitarLetra('K')">K</button>
+                <button onclick="digitarLetra('L')">L</button>
+                <button onclick="digitarLetra('M')">M</button>
+                <button onclick="digitarLetra('N')">N</button>
+                <button onclick="digitarLetra('O')">O</button>
+                <button onclick="digitarLetra('P')">P</button>
+                <button onclick="digitarLetra('Q')">Q</button>
+                <button onclick="digitarLetra('R')">R</button>
+                <button onclick="digitarLetra('S')">S</button>
+                <button onclick="digitarLetra('T')">T</button>
+                <button onclick="digitarLetra('U')">U</button>
+                <button onclick="digitarLetra('V')">V</button>
+                <button onclick="digitarLetra('W')">W</button>
+                <button onclick="digitarLetra('X')">X</button>
+                <button onclick="digitarLetra('Y')">Y</button>
+                <button onclick="digitarLetra('Z')">Z</button>
+            </div>
+            <img src="./imagens/boneco.svg" id="imagem">
         </div>
+        <h2 id="palavraSorteada"></h2>
+        <button onclick="resetar()" class="botaoResetar">Tentar novamente</button>
     </main>    
 </body>
 </html>

@@ -19,17 +19,41 @@ h1 {
 
 .botoes {
     display: flex;
-    align-items: center;
     justify-content: center;
     gap: 15px;
     flex-wrap: wrap;
     width: 480px;
-    margin: 0 auto;
+    align-items: center; 
 }
 
-button {
+.botoes button {
     padding: 10px;
     font-size: 20px;
     width: 100px;
     height: 60px;
+}
+
+.grade {
+    display: flex;
+    gap: 10px;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.grade img {
+    width: 210px;
+    display: none;
+}
+
+#palavraSorteada {
+    display: none;
+    text-align: center;
+}
+
+.botaoResetar {
+    display: block;
+    margin: 30px auto;
+    padding: 20px;
+    font-size: 20px;
+    font-weight: bold;
 }
