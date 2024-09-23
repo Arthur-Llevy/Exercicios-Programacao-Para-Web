@@ -1,3 +1,5 @@
+let vidasRestantes = 5;
+
 const palavras = [
     "abacaxi", "anel", "amigo", "ave", "abacate",
     "bola", "bala", "banho", "bau", "banco",
@@ -31,8 +33,6 @@ let palavraAleatoriaEscolhida = palavras[Math.floor(Math.random() * palavras.len
 
 const letras = document.getElementById('letras');
 
-console.log(palavraAleatoriaEscolhida)
-
 palavraAleatoriaEscolhida.split('').map(letra => {
     let letraDaPalavra = document.createElement('p');
     letraDaPalavra.setAttribute('class', `letra letra-${letra}`)
@@ -41,15 +41,24 @@ palavraAleatoriaEscolhida.split('').map(letra => {
 });
 
 const digitarLetra = (letra) => {
+
+    if (vidasRestantes === 0) {
+        document.getElementById('imagem').style.display = 'block';
+        document.getElementById('palavraSorteada').textContent = `A palavra era: ${palavraAleatoriaEscolhida}`;
+        document.getElementById('palavraSorteada').style.display = 'block';
+        document.getElementById('botoes').style.display = 'none';
+    }
+    
     if (palavraAleatoriaEscolhida.indexOf(letra.toLowerCase()  ) !== -1) {
         Array.from(document.getElementsByClassName(`letra-${letra.toLowerCase()}`)).forEach(paragrafo => {
             paragrafo.textContent = letra
         });
     } else {
-        document.getElementById('imagem').style.display = 'block';
-        document.getElementById('palavraSorteada').textContent = `A palavra era: ${palavraAleatoriaEscolhida}`;
-        document.getElementById('palavraSorteada').style.display = 'block';
-        document.getElementById('botoes').style.display = 'none';
+        vidasRestantes--;
+        // document.getElementById('imagem').style.display = 'block';
+        // document.getElementById('palavraSorteada').textContent = `A palavra era: ${palavraAleatoriaEscolhida}`;
+        // document.getElementById('palavraSorteada').style.display = 'block';
+        // document.getElementById('botoes').style.display = 'none';
     }
 };
 

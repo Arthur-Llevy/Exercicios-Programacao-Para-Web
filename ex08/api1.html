@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pr-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dados da api 1</title>
+	<script defer src="./scripts/api1.js"></script>
+
+</head>
+<body>
+    <h1>Api usada: IP Stack</h1>
+    <p>A IP Stack busca dados a partir de seu endereço IP</p>
+    <main>
+        <h2>Requisição exemplo</h2>
+        <button onclick="requisicaoExemplo()">Fazer requisição</button>
+        <p id="statusRequisicaoExemplo">Status da requisição:</p>
+
+        <p>Dados retornados</p>
+        <p id="dadosRequisicaoExemplo"></p>
+
+        <br>
+        <hr>
+
+        <h2>Faça a sua própria requisição.</h2>
+        <label for="">Digite seu endereço de ip abaixo</label>
+        <input id="enderecoIp">
+        <br>
+        
+        <button onclick="fazerRequisicao()">Fazer requisição</button>
+        <p id="statusRequisicao">Status da requisição:</p>
+
+        <p>Dados retornados</p>
+        <p id="dadosRequisicao"></p>
+    </main>    
+</body>
+</html>
