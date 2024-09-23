@@ -1,5 +1,5 @@
 const requisicaoExemplo = () => {
-    fetch('https://api.ipstack.com/134.201.250.155?access_key=7232b2386b5d73f37c51226d5c80a1ee')
+    fetch('https://api.weatherstack.com/current?access_key=b389f74e5c3ac57828dfea8cb7db50ce&query=New%20York')
     .then(resposta => {
 
         let statusRequisicaoExemplo = document.getElementById('statusRequisicaoExemplo');
@@ -20,9 +20,9 @@ const requisicaoExemplo = () => {
 
 
 const fazerRequisicao = () => {
-    let enderecoIp = document.getElementById('enderecoIp').value;
+    let cidade = document.getElementById('cidade').value;
 
-    fetch(`https://api.ipstack.com/${enderecoIp}?access_key=7232b2386b5d73f37c51226d5c80a1ee`)
+    fetch(`https://api.weatherstack.com/current?access_key=b389f74e5c3ac57828dfea8cb7db50ce&query=${cidade}`)
     .then(resposta => {
         let statusRequisicaoExemplo = document.getElementById('statusRequisicao');
         statusRequisicaoExemplo.innerText = `Status da requisição: ${resposta.status}`;
@@ -39,4 +39,3 @@ const fazerRequisicao = () => {
         pre.innerText = JSON.stringify(data)
     }).catch(() => alert('Falha ao realizar a requisição')) 
 };
-

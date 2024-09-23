@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pr-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dados da api 3 - Weatherstack</title>
+	<script defer src="./scripts/api3.js"></script>
+
+</head>
+<body>
+    <h1>Api usada: Marketstack</h1>
+    <p>A Marketstack fornece dados do mercado de ações mundial em formato JSON</p>
+    <main>
+        <h2>Requisição exemplo</h2>
+        <button onclick="requisicaoExemplo()">Fazer requisição</button>
+        <p id="statusRequisicaoExemplo">Status da requisição:</p>
+
+        <p>Dados retornados</p>
+        <p id="dadosRequisicaoExemplo"></p>
+
+        <br>
+        <hr>
+
+        <h2>Faça a sua própria requisição.</h2>
+        <label for="">Digite o nome de uma cidade</label>
+        <input id="cidade">
+        <br>
+        
+        <button onclick="fazerRequisicao()">Fazer requisição</button>
+        <p id="statusRequisicao">Status da requisição:</p>
+
+        <p>Dados retornados</p>
+        <p id="dadosRequisicao"></p>
+    </main>    
+</body>
+</html>
