@@ -60,9 +60,11 @@ h1 {
 
 #forca{ 
     position: relative;
+    margin: 50px auto;
+    width: 50px;
 }
 
-#cabeca{
+#cabecaForca{
     display: none;
     border: 1px solid black;
     border-radius: 100%;
@@ -70,7 +72,7 @@ h1 {
     height: 50px;
 }
 
-#corpo{
+#corpoForca{
     display: none;
     border: 1px solid black;
     height: 50px;
@@ -78,11 +80,12 @@ h1 {
     margin: auto;
 }
 
-  #corpoCompleto{
+#corpoCompletoForca{
     position: relative;
+    width: 50px;
 }
 
-  #bracoD{
+#bracoDireitoForca{
     display: none;
     border: 1px solid black;
     height: 40px;
@@ -93,7 +96,7 @@ h1 {
     transform: rotate(-30deg);
 }
 
-#bracoE{
+#bracoEsquerdoForca{
     display: none;
     border: 1px solid black;
     height: 40px;
@@ -104,7 +107,7 @@ h1 {
     transform: rotate(30deg);
 }
 
-#pernaE{
+#pernaEsquerdaForca{
     display: none;
     border: 1px solid black;
     height: 40px;
@@ -115,7 +118,7 @@ h1 {
     transform: rotate(30deg);
 }
 
-#pernaD{
+#pernaDireitaForca{
     display: none;
     border: 1px solid black;
     height: 40px;
