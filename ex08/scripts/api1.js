@@ -14,7 +14,24 @@ const requisicaoExemplo = () => {
     })
     .then(data => {
         let pre = document.getElementById('dadosRequisicaoExemplo');
-        pre.innerText = JSON.stringify(data)
+        let ip = document.createElement('li');
+        ip.innerText = `ip: ${data.ip}`;
+        let tipo = document.createElement('li');
+        tipo.innerText = `tipo: ${data.type}`;
+        let codigoContinente = document.createElement('li');
+        codigoContinente.innerText = `Código do continente: ${data.continent_code}`;
+        let nomeContinente = document.createElement('li');
+        nomeContinente.innerText = `Nome do continente: ${data.continent_name}`;
+        let cidade = document.createElement('li');
+        cidade.innerText = `Cidade: ${data.city}`;
+
+
+        pre.appendChild(ip);
+        pre.appendChild(tipo);
+        pre.appendChild(codigoContinente);
+        pre.appendChild(nomeContinente);
+        pre.appendChild(cidade);
+
     }).catch(() => alert('Falha ao realizar a requisição'))
 };
 
@@ -36,7 +53,21 @@ const fazerRequisicao = () => {
     })
     .then(data => {
         let pre = document.getElementById('dadosRequisicao');
-        pre.innerText = JSON.stringify(data)
+        let ip = document.createElement('li');
+        ip.innerText = `ip: ${data.ip}`;
+        let tipo = document.createElement('li');
+        tipo.innerText = `tipo: ${data.type}`;
+        let codigoContinente = document.createElement('li');
+        codigoContinente.innerText = `Código do continente: ${data.continent_code}`;
+        let nomeContinente = document.createElement('li');
+        nomeContinente.innerText = `Nome do continente: ${data.continent_name}`;
+        let cidade = document.createElement('li');
+        cidade.innerText = `Cidade: ${data.city}`;
+
+        pre.appendChild(ip);
+        pre.appendChild(tipo);
+        pre.appendChild(codigoContinente);
+        pre.appendChild(nomeContinente);
+        pre.appendChild(cidade);
     }).catch(() => alert('Falha ao realizar a requisição')) 
 };
-

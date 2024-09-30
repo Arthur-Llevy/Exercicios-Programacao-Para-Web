@@ -9,13 +9,16 @@ const requisicaoExemplo = () => {
             return resposta.json();
         }
         
-        return alert("Falha ao realizar a requisição")
-    
+        return alert("Falha ao realizar a requisição");
     })
     .then(data => {
-        let pre = document.getElementById('dadosRequisicaoExemplo');
-        pre.innerText = JSON.stringify(data)
-    }).catch(() => alert('Falha ao realizar a requisição'))
+        let ul = document.getElementById('dadosRequisicaoExemplo');
+        ul.innerHTML = '';
+
+        data.data.slice(0, 5).forEach(item => {
+            let li = document.createElement('li');
+            li.innerText = `Ação: ${item.symbol}, Data: ${item.date}, Abertura: ${item.open}, Fechamento: ${item.close}, Volume: ${item.volume}`;
+            ul.appendChild(li);
+        });
+    }).catch(() => alert('Falha ao realizar a requisição'));
 };
-
-
