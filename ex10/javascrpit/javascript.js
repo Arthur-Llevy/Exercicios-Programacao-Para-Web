@@ -37,6 +37,7 @@ const pegarDespesas = async () => {
 
                 botaoDeletar.innerText = "x";
                 botaoDeletar.id = despesa.objectId;
+                botaoDeletar.onclick = deletarDespesa;
 
                 botaoSalvarEdicao.innerText = "Salvar";
                 botaoSalvarEdicao.id = despesa.objectId;
@@ -109,6 +110,29 @@ const editarDespesa = async (e) => {
         })
 
         if (resposta.ok) {
+            let respostaEmJson = await resposta.json();
+            alert('Despesa editada com sucesso!');
+            pegarDespesas();
+        } else {
+            throw new Error('Falha ao editar a despesa.');
+        }
+
+    } catch(erro) {
+        alert(erro);
+    }
+}
+
+const deletarDespesa = async (e) => {
+    const idDespesa = e.target.id;
+    let confirmacao = confirm("Tem certeza que deseja excluir essa despesa?");
+
+    try {
+        const resposta = await fetch(`https://parseapi.back4app.com/classes/Despesa/${idDespesa}`, {
+            method: 'DELETE',
+            headers: headers
+        })
+
+        if (resposta.ok && confirmacao) {
             let respostaEmJson = await resposta.json();
             alert('Despesa editada com sucesso!');
             pegarDespesas();
