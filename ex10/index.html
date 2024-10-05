@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pr-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script defer src="javascrpit/javascript.js"></script>
+</head>
+<body>
+
+    <main>
+        <h1>Dashboard - Despesas</h1>
+
+        <div class="criarDespesaDiv">
+            <label for="descricaoDespesa">Descrição da despesa: </label>
+            <textarea id="descricaoDespesa"></textarea>
+            <label for="valorDespesa">Valor da despesa: </label>
+            <textarea id="valorDespesa"></textarea>
+            <button onclick="criarDespesa()">Criar despesa</button>
+        </div>
+        <hr>
+        <ul id="listaDespesas">
+
+        </ul>
+        <div class="somatorio">
+            <h2>Somatório das depesas</h2>
+            <label for="inputSomatorio">Valor total: </label>
+            <input id="inputSomatorio" disabled>
+        </div>
+    </main>
+</body>
+</html>
