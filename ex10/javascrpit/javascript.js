@@ -134,10 +134,10 @@ const deletarDespesa = async (e) => {
 
         if (resposta.ok && confirmacao) {
             let respostaEmJson = await resposta.json();
-            alert('Despesa editada com sucesso!');
+            alert('Despesa excluída com sucesso!');
             pegarDespesas();
         } else {
-            throw new Error('Falha ao editar a despesa.');
+            throw new Error('Falha ao excluir a despesa.');
         }
 
     } catch(erro) {
