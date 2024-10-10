@@ -8,10 +8,8 @@
     <script defer src="javascrpit/javascript.js"></script>
 </head>
 <body>
-
     <main>
-        <h1>Dashboard - Despesas</h1>
-
+        <h1>Dashboard - Despesas</h1>        
         <div class="criarDespesaDiv" id="criarDespesaDiv">
             <h2>Crie uma nova despesa</h2>
             <form id="formulario">
@@ -26,15 +24,16 @@
                 <input type="submit" value="Criar despesa">
             </form>
         </div>
-        <button onclick="alterarVisibilidadePopup()">Criar despesa</button>
-        <hr>
+        <button class="botaoAbrirPopup" onclick="alterarVisibilidadePopup()">Criar despesa</button>
         <ul id="listaDespesas">
 
         </ul>
         <div class="somatorio">
             <h2>Somatório das depesas</h2>
-            <label for="inputSomatorio">Valor total: </label>
-            <input id="inputSomatorio" disabled>
+            <div>
+                <label>Valor total: </label>
+                <span id="valorSomatorio"></span>
+            </div>
         </div>
     </main>
 </body>

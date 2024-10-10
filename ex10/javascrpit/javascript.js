@@ -1,5 +1,5 @@
 let listaDespesas = document.getElementById('listaDespesas');
-let inputSomatorio = document.getElementById('inputSomatorio');
+let valorSomatorio = document.getElementById('valorSomatorio');
 
 const headers = {
     "X-Parse-Application-Id": "SQUcUVFzmJMSZCLTt01g85kY01nG8GDkMSLgUgdQ",
@@ -29,37 +29,50 @@ const pegarDespesas = async () => {
                 let botaoEditar = document.createElement('button');
                 let botaoDeletar = document.createElement('button');
                 let botaoSalvarEdicao = document.createElement('button');
+                let div = document.createElement('div');
 
                 inputValorDespesa.value = despesa.valor;
                 inputValorDespesa.disabled = true;
+                inputValorDespesa.classList.add('inputValorDespesa');
                 inputValorDespesa.id = `despesa-${despesa.objectId}`
 
                 novaDespesa.innerText = `${despesa.descricao}`;
 
                 botaoEditar.innerText = "Editar";
+                botaoEditar.classList.add('botaoEditar');
                 botaoEditar.id = despesa.objectId;
                 botaoEditar.onclick = alterarVisibilidadeInputDespesa;
 
                 botaoDeletar.innerText = "x";
+                botaoDeletar.classList.add('botaoDeletar');
                 botaoDeletar.id = despesa.objectId;
                 botaoDeletar.onclick = deletarDespesa;
 
                 botaoSalvarEdicao.innerText = "Salvar";
                 botaoSalvarEdicao.id = despesa.objectId;
-                botaoSalvarEdicao.onclick = editarDespesa;
+                botaoSalvarEdicao.classList.add('botaoSalvar');
+                botaoSalvarEdicao.onclick = editarDespesa;                
 
-                listaDespesas.appendChild(novaDespesa);
-                listaDespesas.appendChild(inputValorDespesa);
-                listaDespesas.appendChild(botaoEditar);
-                listaDespesas.appendChild(botaoDeletar);
-                listaDespesas.appendChild(botaoSalvarEdicao);
+                div.appendChild(novaDespesa);
+                div.appendChild(inputValorDespesa);
+                div.appendChild(botaoEditar);
+                div.appendChild(botaoDeletar);
+                div.appendChild(botaoSalvarEdicao);
+                
+                
+                listaDespesas.appendChild(div);
             });
             
             let somatorioDespesas = respostaEmJson.results.reduce((valorAtual, item) => { 
                 return valorAtual + item.valor
             }, 0);
+
+            let valorConvertidoParaReal = parseFloat(somatorioDespesas).toLocaleString('pt-BR', {
+                style: 'currency',
+                currency: 'BRL',
+            })
     
-            inputSomatorio.value = somatorioDespesas;
+            valorSomatorio.innerText = `${valorConvertidoParaReal}`;
         } else {
             throw new Error('Falha ao buscar as despesas');
         }
