@@ -22,9 +22,11 @@
                     <input type="number" required id="valorDespesa">
                 </div>
                 <input type="submit" value="Criar despesa">
+                <input type="button" onclick="alterarVisibilidadePopup()" value="Cancelar">
             </form>
         </div>
         <button class="botaoAbrirPopup" onclick="alterarVisibilidadePopup()">Criar despesa</button>
+        <p id="textoAlternativo">Não há despesas para exibir. Crie uma agora mesmo!</p>
         <ul id="listaDespesas">
 
         </ul>

@@ -18,10 +18,17 @@ h1 {
     font-size: 2.5rem;
 }
 
+#textoAlternativo {
+    text-align: center;
+    font-size: 1.5rem;
+    margin: 36px;
+    display: none;
+}
+
 .criarDespesaDiv {
     width: 90%;
-    max-width: 400px;
-    height: 300px;
+    max-width: 420px;
+    height: 420px;
     background: white;
     border-radius: 4px;
     box-shadow: 2px 2px 13px #00000059;
@@ -30,6 +37,7 @@ h1 {
     transform: translate(-50%, -50%);
     padding: 16px;
     opacity: 0;
+    visibility: hidden;
 }
 
 .criarDespesaDiv h2 {
@@ -63,6 +71,15 @@ input[type="submit"] {
     font-size: 1.2rem;
     background: #80ffae;
     box-shadow: 1px 1px 4px #8bffab;
+    border: none;
+    transition: .3s;
+}
+
+input[type="button"] {
+    padding: 8px;
+    font-size: 1.2rem;
+    background: #ff8096;
+    box-shadow: 1px 1px 4px #ff8096;
     border: none;
     transition: .3s;
 }

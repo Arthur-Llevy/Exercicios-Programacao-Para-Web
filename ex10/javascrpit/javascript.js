@@ -10,6 +10,7 @@ const headers = {
 const alterarVisibilidadePopup = () => {
     let popup = document.getElementById('criarDespesaDiv');
     popup.style.opacity = popup.style.opacity === '1' ? 0 : 1;
+    popup.style.visibility = popup.style.opacity === '1' ? "initial" : "hidden";
 }
 
 const pegarDespesas = async () => {
@@ -22,57 +23,64 @@ const pegarDespesas = async () => {
         if (resposta.ok) {
             listaDespesas.innerHTML = "";
             let respostaEmJson = await resposta.json();
+
+            if (respostaEmJson.results.length === 0) {
+                let textoAlternativo = document.getElementById('textoAlternativo');
+                textoAlternativo.style.display = 'block';
+            } else {
+
+                respostaEmJson.results.forEach(despesa => {
+                    let novaDespesa = document.createElement('li');
+                    let inputValorDespesa = document.createElement('input');
+                    let botaoEditar = document.createElement('button');
+                    let botaoDeletar = document.createElement('button');
+                    let botaoSalvarEdicao = document.createElement('button');
+                    let div = document.createElement('div');
     
-            respostaEmJson.results.forEach(despesa => {
-                let novaDespesa = document.createElement('li');
-                let inputValorDespesa = document.createElement('input');
-                let botaoEditar = document.createElement('button');
-                let botaoDeletar = document.createElement('button');
-                let botaoSalvarEdicao = document.createElement('button');
-                let div = document.createElement('div');
-
-                inputValorDespesa.value = despesa.valor;
-                inputValorDespesa.disabled = true;
-                inputValorDespesa.classList.add('inputValorDespesa');
-                inputValorDespesa.id = `despesa-${despesa.objectId}`
-
-                novaDespesa.innerText = `${despesa.descricao}`;
-
-                botaoEditar.innerText = "Editar";
-                botaoEditar.classList.add('botaoEditar');
-                botaoEditar.id = despesa.objectId;
-                botaoEditar.onclick = alterarVisibilidadeInputDespesa;
-
-                botaoDeletar.innerText = "x";
-                botaoDeletar.classList.add('botaoDeletar');
-                botaoDeletar.id = despesa.objectId;
-                botaoDeletar.onclick = deletarDespesa;
-
-                botaoSalvarEdicao.innerText = "Salvar";
-                botaoSalvarEdicao.id = despesa.objectId;
-                botaoSalvarEdicao.classList.add('botaoSalvar');
-                botaoSalvarEdicao.onclick = editarDespesa;                
-
-                div.appendChild(novaDespesa);
-                div.appendChild(inputValorDespesa);
-                div.appendChild(botaoEditar);
-                div.appendChild(botaoDeletar);
-                div.appendChild(botaoSalvarEdicao);
-                
-                
-                listaDespesas.appendChild(div);
-            });
-            
-            let somatorioDespesas = respostaEmJson.results.reduce((valorAtual, item) => { 
-                return valorAtual + item.valor
-            }, 0);
-
-            let valorConvertidoParaReal = parseFloat(somatorioDespesas).toLocaleString('pt-BR', {
-                style: 'currency',
-                currency: 'BRL',
-            })
+                    inputValorDespesa.value = despesa.valor;
+                    inputValorDespesa.disabled = true;
+                    inputValorDespesa.classList.add('inputValorDespesa');
+                    inputValorDespesa.id = `despesa-${despesa.objectId}`
     
-            valorSomatorio.innerText = `${valorConvertidoParaReal}`;
+                    novaDespesa.innerText = `${despesa.descricao}`;
+    
+                    botaoEditar.innerText = "Editar";
+                    botaoEditar.classList.add('botaoEditar');
+                    botaoEditar.id = despesa.objectId;
+                    botaoEditar.onclick = alterarVisibilidadeInputDespesa;
+    
+                    botaoDeletar.innerText = "x";
+                    botaoDeletar.classList.add('botaoDeletar');
+                    botaoDeletar.id = despesa.objectId;
+                    botaoDeletar.onclick = deletarDespesa;
+    
+                    botaoSalvarEdicao.innerText = "Salvar";
+                    botaoSalvarEdicao.id = despesa.objectId;
+                    botaoSalvarEdicao.classList.add('botaoSalvar');
+                    botaoSalvarEdicao.onclick = editarDespesa;                
+    
+                    div.appendChild(novaDespesa);
+                    div.appendChild(inputValorDespesa);
+                    div.appendChild(botaoEditar);
+                    div.appendChild(botaoDeletar);
+                    div.appendChild(botaoSalvarEdicao);
+                    
+                    
+                    listaDespesas.appendChild(div);
+                });
+                
+                let somatorioDespesas = respostaEmJson.results.reduce((valorAtual, item) => { 
+                    return valorAtual + item.valor
+                }, 0);
+    
+                let valorConvertidoParaReal = parseFloat(somatorioDespesas).toLocaleString('pt-BR', {
+                    style: 'currency',
+                    currency: 'BRL',
+                })
+        
+                valorSomatorio.innerText = `${valorConvertidoParaReal}`;
+            }
+
         } else {
             throw new Error('Falha ao buscar as despesas');
         }
@@ -82,9 +90,12 @@ const pegarDespesas = async () => {
 }
 
 const criarDespesa = async () => {
+    let descricao = document.getElementById('descricaoDespesa');
+    let valor = document.getElementById('valorDespesa');
+
     let dados = {
-        descricao: document.getElementById('descricaoDespesa').value,
-        valor: Number(document.getElementById('valorDespesa').value),
+        descricao: descricao.value,
+        valor: Number(valor.value)
     }
 
     try {
@@ -105,6 +116,9 @@ const criarDespesa = async () => {
     } catch(erro) {
         alert(erro);
     }
+
+    descricao.value = "";
+    valor.value = "";
 }
 
 document.getElementById('formulario').onsubmit = async (e) => {
@@ -121,33 +135,40 @@ const alterarVisibilidadeInputDespesa = async (e) => {
     const idDespesa = e.target.id;
     let inputDespesa = document.getElementById(`despesa-${idDespesa}`);
     inputDespesa.disabled = !inputDespesa.disabled;
+    inputDespesa.focus();
 } 
 
 const editarDespesa = async (e) => {
     const idDespesa = e.target.id;
     let inputDespesa = document.getElementById(`despesa-${idDespesa}`);
-    let dados = {
-        valor: Number(inputDespesa.value),
-    }
 
-    try {
-        const resposta = await fetch(`https://parseapi.back4app.com/classes/Despesa/${idDespesa}`, {
-            method: 'PUT',
-            body: JSON.stringify(dados),
-            headers: headers
-        })
-
-        if (resposta.ok) {
-            let respostaEmJson = await resposta.json();
-            alert('Despesa editada com sucesso!');
-            pegarDespesas();
-        } else {
-            throw new Error('Falha ao editar a despesa.');
+    if (inputDespesa.value.trim() === "") {
+        return alert("Preencha todos os campos.")
+    } else {
+        let dados = {
+            valor: Number(inputDespesa.value),
         }
-
-    } catch(erro) {
-        alert(erro);
+    
+        try {
+            const resposta = await fetch(`https://parseapi.back4app.com/classes/Despesa/${idDespesa}`, {
+                method: 'PUT',
+                body: JSON.stringify(dados),
+                headers: headers
+            })
+    
+            if (resposta.ok) {
+                let respostaEmJson = await resposta.json();
+                alert('Despesa editada com sucesso!');
+                pegarDespesas();
+            } else {
+                throw new Error('Falha ao editar a despesa.');
+            }
+    
+        } catch(erro) {
+            alert(erro);
+        }
     }
+
 }
 
 const deletarDespesa = async (e) => {
