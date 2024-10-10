@@ -7,6 +7,11 @@ const headers = {
     "Content-Type": "application/json"
 };
 
+const alterarVisibilidadePopup = () => {
+    let popup = document.getElementById('criarDespesaDiv');
+    popup.style.opacity = popup.style.opacity === '1' ? 0 : 1;
+}
+
 const pegarDespesas = async () => {
     try {
         const resposta = await fetch("https://parseapi.back4app.com/classes/Despesa", {
@@ -85,6 +90,16 @@ const criarDespesa = async () => {
         }
 
     } catch(erro) {
+        alert(erro);
+    }
+}
+
+document.getElementById('formulario').onsubmit = async (e) => {
+    e.preventDefault();
+    try {
+        await criarDespesa();
+        alterarVisibilidadePopup();
+    } catch (erro) {
         alert(erro);
     }
 }

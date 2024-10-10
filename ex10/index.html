@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Dashboard - Despesas</title>
+    <link rel="stylesheet" href="css/styles.css">
     <script defer src="javascrpit/javascript.js"></script>
 </head>
 <body>
@@ -11,13 +12,21 @@
     <main>
         <h1>Dashboard - Despesas</h1>
 
-        <div class="criarDespesaDiv">
-            <label for="descricaoDespesa">Descrição da despesa: </label>
-            <textarea id="descricaoDespesa"></textarea>
-            <label for="valorDespesa">Valor da despesa: </label>
-            <textarea id="valorDespesa"></textarea>
-            <button onclick="criarDespesa()">Criar despesa</button>
+        <div class="criarDespesaDiv" id="criarDespesaDiv">
+            <h2>Crie uma nova despesa</h2>
+            <form id="formulario">
+                <div>
+                    <label for="descricaoDespesa">Descrição da despesa: </label>
+                    <input type="text" required id="descricaoDespesa">
+                </div>
+                <div>
+                    <label for="valorDespesa">Valor da despesa: </label>
+                    <input type="number" required id="valorDespesa">
+                </div>
+                <input type="submit" value="Criar despesa">
+            </form>
         </div>
+        <button onclick="alterarVisibilidadePopup()">Criar despesa</button>
         <hr>
         <ul id="listaDespesas">
 
