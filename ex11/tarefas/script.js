@@ -30,10 +30,17 @@ const getUser = async () => {
     });
 
     const reponseJson = await response.json();
-    const user = {
-      sessionToken: reponseJson.sessionToken
+
+    console.log(reponseJson)
+
+    if (reponseJson.code === 209) {
+      location.href = "/ex11/login.html"
+    } else {
+      const user = {
+        sessionToken: reponseJson.sessionToken
+      }
+      return user;
     }
-    return user;
 
   } catch (err) {
     alert("err")
