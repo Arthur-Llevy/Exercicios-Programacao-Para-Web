@@ -87,9 +87,9 @@ const handleBtLoginClick = async () => {
   localStorage.user = JSON.stringify(data);
   const searchParams = new URLSearchParams(location.search);
   if (searchParams.has("url")) {
-    //location.replace(searchParams.get("url"));
+    location.replace(searchParams.get("url"));
   } else {
-    //history.back();
+    history.back();
   }
 };
 

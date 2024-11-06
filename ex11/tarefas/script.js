@@ -12,8 +12,31 @@ const headersJson = {
   "Content-Type": "application/json",
 };
 
-const getUser = () => {
-  console.log(JSON.parse(localStorage.getItem("user")).sessionToken)
+const getUser = async () => {
+  let token = JSON.parse(localStorage.getItem("user")).sessionToken;
+
+  const headersWithSessionToken = {
+    ...headers,
+    "X-Parse-Session-Token": token
+  }
+
+  try {
+    const response = await fetch(`${baseURL}/user/me`, {
+      headers: headersWithSessionToken
+    });
+
+    const reponseJson = await response.json();
+    console.log(responseJson)
+
+    if (!responseJson.ok) {
+      location.href = "/"
+    } else {
+      return
+    }
+  } catch (err) {
+    alert(err)
+  }
+
   let user = null;
   const userJson = localStorage.user;
   if (userJson) {
