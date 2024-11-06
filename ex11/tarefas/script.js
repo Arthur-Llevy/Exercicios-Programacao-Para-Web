@@ -21,29 +21,23 @@ const getUser = async () => {
   }
 
   try {
-    const response = await fetch(`${baseURL}/user/me`, {
-      headers: headersWithSessionToken
+    const response = await fetch(`https://parseapi.back4app.com/users/me`, {
+      headers: {
+        "X-Parse-Application-Id": "gj7FJzDrVOSifeSRzrJjBHAmDGtw0DXY9zxFFCaF",
+        "X-Parse-REST-API-Key": "iUEP2oLnnddPLP0FaKYmE0zHdSJW4DIzfuU9b6or",
+        "X-Parse-Session-Token": token
+      }
     });
 
     const reponseJson = await response.json();
-    console.log(responseJson)
-
-    if (!responseJson.ok) {
-      location.href = "/"
-    } else {
-      return
+    const user = {
+      sessionToken: reponseJson.sessionToken
     }
-  } catch (err) {
-    alert(err)
-  }
+    return user;
 
-  let user = null;
-  const userJson = localStorage.user;
-  if (userJson) {
-    user = JSON.parse(userJson);
+  } catch (err) {
+    alert("err")
   }
-  console.log("user", user);
-  return user;
 };
 
 const createList = (data) => {
@@ -68,7 +62,7 @@ const createList = (data) => {
 
 const handleCheckboxClick = async (cb, tarefa) => {
   let user = getUser();
-  if (!user) {
+  if (user !== null) {
     alert("Você precisa estar logado");
     return;
   }
@@ -84,7 +78,6 @@ const handleCheckboxClick = async (cb, tarefa) => {
       body: JSON.stringify({ concluida: !tarefa.concluida }),
     });
     cb.disabled = false;
-    console.log(response);
     if (!response.ok) {
       cb.checked = !cb.checked;
       alert("Erro ao acessar o servidor: " + response.status);
@@ -112,7 +105,6 @@ const handleBtRemoverClick = async (bt, tarefa) => {
       },
     });
     bt.disabled = false;
-    console.log(response);
     if (!response.ok) {
       alert("Erro ao acessar o servidor: " + response.status);
       throw new Error("Erro encontrado: " + response.status);
@@ -124,17 +116,13 @@ const handleBtRemoverClick = async (bt, tarefa) => {
 };
 
 const getTarefas = async () => {
-  let user = getUser();
-  if (!user) {
+  let user = await getUser();
+  if (user === null) {
     alert("Você precisa estar logado para listar as tarefas!");
     return;
   }
   try {
-    console.log("baseURL", baseURL);
-    console.log("headers", {
-      ...headers,
-      "X-Parse-Session-Token": user.sessionToken,
-    });
+     console.log(user.sessionToken)
     const response = await fetch(baseURL, {
       method: "GET",
       headers: {
@@ -142,7 +130,8 @@ const getTarefas = async () => {
         "X-Parse-Session-Token": user.sessionToken,
       },
     });
-    console.log(response);
+
+    console.log(response)
     if (!response.ok) {
       alert("Erro ao acessar o servidor: " + response.status);
       throw new Error("Erro encontrado: " + response.status);
@@ -156,8 +145,8 @@ const getTarefas = async () => {
 
 const handleBtAdicionarClick = async () => {
   console.log("Botão adicionar click");
-  let user = getUser();
-  if (!user) {
+  let user = await getUser();
+  if (user === null) {
     alert("Você precisa estar logado");
     return;
   }
@@ -176,7 +165,6 @@ const handleBtAdicionarClick = async () => {
       },
       body: JSON.stringify({ descricao: descricao }),
     });
-    console.log(response);
     if (!response.ok) {
       alert("Erro ao acessar o servidor: " + response.status);
       throw new Error("Erro encontrado: " + response.status);
